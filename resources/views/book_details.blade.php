@@ -11,10 +11,11 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Description</th>
+                    <th style="background-color:beige;" scope="col">ID</th>
+                    <th style="background-color:beige;" scope="col">Title</th>
+                    <th style="background-color:beige;" scope="col">Price</th>
+                    <th style="background-color:beige;" scope="col">Category</th>
+                    <th style="background-color:beige;" scope="col">Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,7 @@
                     <th scope="row">{{ $book->id }}</th>
                     <td>{{ $book->title }}</td>
                     <td>{{ $book->price }}</td>
+                    <td>{{ $book->categories->name ?? '-' }}</td>
                     <td>{{ $book->description }}</td>
                 </tr>
             </tbody>

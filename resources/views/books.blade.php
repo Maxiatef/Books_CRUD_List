@@ -7,6 +7,9 @@
         .pagination .page-link {
             font-size: 14px; /* Adjust the font size as needed */
         }
+        .t{
+            background-color:  beige;
+        }
 </style>
     <!-- Other head elements -->
 </head>
@@ -15,10 +18,12 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Acrions</th>
+                    <th style="background-color:beige;" scope="col">ID</th>
+                    <th style="background-color:beige;">Image</th>
+                    <th style="background-color:beige;">Title</th>
+                    <th style="background-color:beige;">Price</th>
+                    <th style="background-color:beige;">Category</th>
+                    <th style="background-color:beige;">Actions</th>
 
                 </tr>
             </thead>
@@ -26,8 +31,10 @@
                 @foreach ($books as $index => $book)
                     <tr>
                     <th scope="row">{{ $book["id"] }}</th>
+                    <td><img width="60px" height="60px" src="{{ asset('storage/books/') ."/" . $book->pic}}" alt=""></td>
                         <td>{{ $book['title'] }}</td>
                         <td>{{ $book['price'] }}</td>
+                        <td>{{ $book->categories->name ?? '-' }}</td>
                         <td>
                         <form action="{{ route('show_book', ['id' => $book['id']]) }}" method="GET" class="d-inline">
                             @csrf

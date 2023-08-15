@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('title')->unique();
             $table->integer('price'); // Remove the auto_increment attribute here
             $table->text('description')->nullable();
+            
             $table->timestamps();
         });
     }

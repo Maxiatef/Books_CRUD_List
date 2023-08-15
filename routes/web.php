@@ -21,16 +21,14 @@ Route::get('/', function () {
 });
 
 // create route /profile
-Route::get('/books', [BookController::class, 'index'])->name('books');
 
-Route::get('/create-book', [BookController::class, 'show'])->name('create_book');
-
-Route::post('/create-book', [BookController::class, 'create']);
-
-Route::get('/books/{id}', [BookController::class, 'showBook'])->name('show_book');
-
-Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('destroy_book');
-
+Route::middleware(['auth','CheckAge'])->group(function () {
+    Route::get('/books', [BookController::class, 'index'])->name('books');
+    Route::get('/create-book', [BookController::class, 'show'])->name('create_book');
+    Route::post('/create-book', [BookController::class, 'create']);
+    Route::get('/books/{id}', [BookController::class, 'showBook'])->name('show_book');
+    Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('destroy_book');
+});
 
 
 
@@ -41,3 +39,7 @@ Route::get('dash', function () {
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
